@@ -1,0 +1,27 @@
+#Prof. Fernando Amaral
+
+#parar kafka e zookeeper
+./kafka-server-stop.sh
+./zookeeper-server-stop.sh
+
+#apagar o diretorio de topicos
+rm -r kafka*
+rm -r zookeeper
+
+#copiamos o arquivo de configuração do server
+cp server.properties server.properties0
+cp server.properties server.properties1
+cp server.properties server.properties2
+
+#inicia zookeeper
+./zookeeper-server-start.sh ../config/zookeeper.properties
+
+#inicia brokers
+./kafka-server-start.sh ../config/server.properties0
+./kafka-server-start.sh ../config/server.properties1
+./kafka-server-start.sh ../config/server.properties2
+
+#checar 
+./zookeeper-shell.sh localhost:2181 
+ls /brokers/ids
+get /brokers/ids/1

@@ -1,0 +1,22 @@
+#Prof. Fernando amaral
+
+#chegar no zookeeper
+./zookeeper-shell.sh localhost:2181
+ls /brokers/ids
+
+#criamos um topico onde definimos que numero minimo de replicas deve ser igual a 3
+./kafka-topics.sh --bootstrap-server 127.0.0.1:9092 --topic testall --create --partitions 3 --replication-factor 3
+--config min.insync.replicas=3
+
+#abrimos um producer com acks = all
+./kafka-console-producer.sh --bootstrap-server 127.0.0.1:9092  --topic testall --request-required-acks all
+
+#chegar no zookeeper
+ls /brokers/ids
+
+#inicar broker de id 2
+./kafka-server-start.sh ../config/server.properties2
+
+#chegar no zookeeper
+ls /brokers/ids
+

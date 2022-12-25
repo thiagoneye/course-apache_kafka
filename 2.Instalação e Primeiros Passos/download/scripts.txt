@@ -1,0 +1,33 @@
+#prof. Fernando Amaral
+#atualizar pacotes de sistema
+sudo apt update
+sudo apt -y upgrade
+
+#instalar Java
+sudo apt install curl mlocate default-jdk -y
+#verificar versão
+java -version
+
+#descompactar
+tar -xzf kafka_2.13-2.8.0.tgz
+
+#iniciar zookeeper
+./zookeeper-server-start.sh ../config/zookeeper.properties
+
+#iniciar broker
+./kafka-server-start.sh ../config/server.properties
+
+#criar topico
+./bin/kafka-topics.sh --create --topic ola-mundo --bootstrap-server localhost:9092
+
+#enviar mensagem producer
+./kafka-console-producer.sh --topic ola-mundo --bootstrap-server localhost:9092
+
+#consumir
+bin/kafka-console-consumer.sh --topic ola-mundo --from-beginning --bootstrap-server localhost:9092
+
+#listar
+./kafka-topics.sh --zookeeper localhost:2181 --list
+
+#descrever
+./kafka-topics.sh --describe --topic ola-mundo --bootstrap-server localhost:9092

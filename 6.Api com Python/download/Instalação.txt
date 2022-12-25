@@ -1,0 +1,12 @@
+#Prof. Fernando Amaral
+
+python3 --version
+sudo apt install python3-pip
+sudo -H pip install jupyter
+pip install kafka-python
+jupyter notebook
+
+
+
+
+

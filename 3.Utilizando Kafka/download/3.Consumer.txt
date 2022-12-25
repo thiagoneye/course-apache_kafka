@@ -1,0 +1,21 @@
+#prof. Fernando Amaral
+
+#Consumir do inicio
+./kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --topic mensagens --from-beginning
+
+#Producer
+./kafka-console-producer.sh --bootstrap-server 127.0.0.1:9092  --topic mensagens
+
+#consumir com off set
+./kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --topic mensagens --partions 0 --offset 2
+./kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --topic mensagens --partions 1 --offset 2
+./kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --topic mensagens --partions 2 --offset 2
+
+#max messagens 
+./kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --topic mensagens --partions 2 --offset 2 --max-messagens 1
+
+#consumir de partições
+./kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --topic mensagens --partions 0
+./kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --topic mensagens --partions 1
+./kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --topic mensagens --partions 2
+

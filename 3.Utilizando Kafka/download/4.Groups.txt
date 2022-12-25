@@ -1,0 +1,26 @@
+#prof. Fernando Amaral
+
+#Cria um consumidor com um grupo
+./kafka-console-consumer.sh --bootstrap-server 127.0.0.1:9092 --topic mensagens --group consumidores
+
+#Cria outro consumidor com o mesmo grupo
+./kafka-console-consumer.sh --bootstrap-server 127.0.0.1:9092 --topic mensagens --group consumidores
+
+#Cria um consumidor do mesmo topico mas de outro grupo
+./kafka-console-consumer.sh --bootstrap-server 127.0.0.1:9092 --topic mensagens --group novosconsumidores
+
+#mostra consumers groups
+./kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list
+ 
+#descrever grupos
+kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group consumidores
+
+#abrir um novo consumidor usando from beggining
+./kafka-console-consumer.sh --bootstrap-server 127.0.0.1:9092 --topic mensagens --group consumidores --from-beginning
+
+#reset do offset
+./kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group consumidores --topic mensagens --reset-offsets --to-earliest --execute 
+
+#novo consumidor para o grupo, as mensagens devem ser lidas desde o inicio
+./kafka-console-consumer.sh --bootstrap-server 127.0.0.1:9092 --topic mensagens --group consumidores
+
