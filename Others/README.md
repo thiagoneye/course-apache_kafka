@@ -1,6 +1,6 @@
-#Lista de Comandos
+# Lista de Comandos
 
-##Iniciando o Kafka via CLI (Terminal)
+## Iniciando o Kafka via CLI (Terminal)
 
 cd ~/kafka/bin
 ./zookeeper-server-start.sh ../config/zookeeper.properties
